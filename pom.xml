@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sprinthive</groupId>
-    <artifactId>kyc-evidence-mngnt</artifactId>
+    <artifactId>kyc-evidence-mgmt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>kyc-evidence-mngnt</name>
+    <name>kyc-evidence-mgmt</name>
     <description>Know Your Customer Evidence Management service</description>
 
     <parent>
