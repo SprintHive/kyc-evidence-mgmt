@@ -1,4 +1,4 @@
-package com.sprinthive.document.mgmt.exception;
+package com.sprinthive.evidence.mgmt.exception;
 
 import org.elasticsearch.rest.RestStatus;
 import org.springframework.http.HttpStatus;

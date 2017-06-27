@@ -1,6 +1,6 @@
-package com.sprinthive.document.mgmt.dao;
+package com.sprinthive.evidence.mgmt.dao;
 
-import com.sprinthive.document.mgmt.model.IdentityEvidenceRequest;
+import com.sprinthive.evidence.mgmt.model.IdentityEvidenceRequest;
 import org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository;
 
 import java.util.List;

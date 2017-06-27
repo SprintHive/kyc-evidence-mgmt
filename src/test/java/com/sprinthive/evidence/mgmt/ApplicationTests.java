@@ -1,4 +1,4 @@
-package com.sprinthive.document.mgmt;
+package com.sprinthive.evidence.mgmt;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

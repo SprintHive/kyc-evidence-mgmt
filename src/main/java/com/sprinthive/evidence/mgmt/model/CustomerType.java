@@ -1,6 +1,6 @@
-package com.sprinthive.document.mgmt.model;
+package com.sprinthive.evidence.mgmt.model;
 
-import static com.sprinthive.document.mgmt.model.VerificationType.*;
+import static com.sprinthive.evidence.mgmt.model.VerificationType.*;
 
 /**
  * Created by dirk on 2017/06/21.

@@ -1,4 +1,4 @@
-package com.sprinthive.document.mgmt.model;
+package com.sprinthive.evidence.mgmt.model;
 
 /**
  * Created by dirk on 2017/06/21.

@@ -1,9 +1,9 @@
-package com.sprinthive.document.mgmt.service;
+package com.sprinthive.evidence.mgmt.service;
 
-import com.sprinthive.document.mgmt.dao.EvidenceRequestRepository;
-import com.sprinthive.document.mgmt.exception.ResourceNotFoundException;
-import com.sprinthive.document.mgmt.model.IdentityEvidenceRequest;
-import com.sprinthive.document.mgmt.util.IdNumberUtil;
+import com.sprinthive.evidence.mgmt.dao.EvidenceRequestRepository;
+import com.sprinthive.evidence.mgmt.exception.ResourceNotFoundException;
+import com.sprinthive.evidence.mgmt.model.IdentityEvidenceRequest;
+import com.sprinthive.evidence.mgmt.util.IdNumberUtil;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;

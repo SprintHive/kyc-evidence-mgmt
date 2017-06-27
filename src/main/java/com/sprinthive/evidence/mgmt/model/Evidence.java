@@ -1,4 +1,4 @@
-package com.sprinthive.document.mgmt.model;
+package com.sprinthive.evidence.mgmt.model;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,8 +1,8 @@
-package com.sprinthive.document.mgmt.rest;
+package com.sprinthive.evidence.mgmt.rest;
 
-import com.sprinthive.document.mgmt.model.EvidenceRequest;
-import com.sprinthive.document.mgmt.model.IdentityEvidenceRequest;
-import com.sprinthive.document.mgmt.service.EvidenceManagement;
+import com.sprinthive.evidence.mgmt.model.EvidenceRequest;
+import com.sprinthive.evidence.mgmt.model.IdentityEvidenceRequest;
+import com.sprinthive.evidence.mgmt.service.EvidenceManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
