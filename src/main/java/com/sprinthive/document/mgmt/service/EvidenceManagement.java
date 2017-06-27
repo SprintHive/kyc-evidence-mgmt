@@ -1,30 +1,22 @@
-package com.sprinthive.document.mngnt.service;
+package com.sprinthive.document.mgmt.service;
 
-import com.sprinthive.document.mngnt.dao.EvidenceRequestRepository;
-import com.sprinthive.document.mngnt.exception.ResourceNotFoundException;
-import com.sprinthive.document.mngnt.model.EvidenceRequest;
-import com.sprinthive.document.mngnt.model.IdentityEvidenceRequest;
-import com.sprinthive.document.mngnt.util.IdNumberUtil;
+import com.sprinthive.document.mgmt.dao.EvidenceRequestRepository;
+import com.sprinthive.document.mgmt.exception.ResourceNotFoundException;
+import com.sprinthive.document.mgmt.model.IdentityEvidenceRequest;
+import com.sprinthive.document.mgmt.util.IdNumberUtil;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.dsl.IntegrationFlow;
-import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;

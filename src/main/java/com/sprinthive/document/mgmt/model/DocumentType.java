@@ -1,4 +1,4 @@
-package com.sprinthive.document.mngnt.model;
+package com.sprinthive.document.mgmt.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

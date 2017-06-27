@@ -1,6 +1,6 @@
-package com.sprinthive.document.mngnt.model;
+package com.sprinthive.document.mgmt.model;
 
-import static com.sprinthive.document.mngnt.model.VerificationType.*;
+import static com.sprinthive.document.mgmt.model.VerificationType.*;
 
 /**
  * Created by dirk on 2017/06/21.

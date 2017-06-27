@@ -1,4 +1,4 @@
-package com.sprinthive.document.mngnt.model;
+package com.sprinthive.document.mgmt.model;
 
 /**
  * Created by dirk on 2017/06/21.

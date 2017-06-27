@@ -1,9 +1,7 @@
-package com.sprinthive.document.mngnt.model;
+package com.sprinthive.document.mgmt.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-
-import javax.annotation.Generated;
 
 /**
  * Created by dirk on 2017/06/19.

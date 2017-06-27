@@ -1,11 +1,8 @@
-package com.sprinthive.document.mngnt.exception;
+package com.sprinthive.document.mgmt.exception;
 
-import org.elasticsearch.common.io.stream.StreamInput;
 import org.elasticsearch.rest.RestStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import java.io.IOException;
 
 /**
  * Created by dirk on 2017/06/24.

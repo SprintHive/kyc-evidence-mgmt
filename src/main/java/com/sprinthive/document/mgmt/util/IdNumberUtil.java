@@ -1,4 +1,4 @@
-package com.sprinthive.document.mngnt.util;
+package com.sprinthive.document.mgmt.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
