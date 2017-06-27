@@ -1,0 +1,33 @@
+
+server:
+  http:
+    multipart:
+      maxFileSize: 100Mb
+      maxRequestSize: 100Mb
+spring:
+  rabbitmq:
+    addresses: 10.0.0.2
+  data:
+    elasticsearch:
+      cluster-nodes: 10.0.0.84:9300
+  cloud:
+    stream:
+      bindings:
+        evidenceRequestCreatedPush:
+          destination: evidence-request-created
+          contentType: application/json
+        evidenceRequestProofAddedPush:
+          destination: evidence-request-proof-added
+          contentType: application/json
+        evidenceRequestProofAddedListener:
+          destination: evidence-request-proof-added
+          contentType: application/json
+---
+spring:
+  profiles: development
+services:
+  addressExtractor:
+    endpoint: http://127.0.0.1:8080
+
+
+
