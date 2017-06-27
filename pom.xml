@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sprinthive</groupId>
-    <artifactId>document.mngnt</artifactId>
+    <artifactId>kyc-evidence-mngnt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>document.mngnt</name>
-    <description>Storage and classification of documents</description>
+    <name>kyc-evidence-mngnt</name>
+    <description>Know Your Customer Evidence Management service</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
