@@ -40,7 +40,7 @@ public class EvidenceManagement {
         this.evidenceRequestProofAddedPush = producerChannels.evidenceRequestProofAddedPush();
     }
 
-    public List<IdentityEvidenceRequest> findIdDocumentEvidance(String idNumber) {
+    public List<IdentityEvidenceRequest> findIdDocumentEvidence(String idNumber) {
         idNumber = IdNumberUtil.validate(idNumber);
         List<IdentityEvidenceRequest> evidenceRequests = evidenceRequestRepository.findAllByIdentifyingNumber(idNumber);
 
@@ -63,7 +63,7 @@ public class EvidenceManagement {
     }
 
     public IdentityEvidenceRequest addProofToIdentity(String idNumber, String key, Map<String, Object> payload) {
-        List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidance(idNumber);
+        List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidence(idNumber);
         if(evidenceRequests == null || evidenceRequests.isEmpty()){
             throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: "+idNumber);
         }
@@ -75,8 +75,8 @@ public class EvidenceManagement {
         return evidenceRequest;
     }
 
-    public Map<String, Object> getProofToIdentity(String idNumber, String proofkey) {
-        List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidance(idNumber);
+    public Map<String, Object> getIdentityProof(String idNumber, String proofkey) {
+        List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidence(idNumber);
         if(evidenceRequests == null || evidenceRequests.isEmpty()){
             throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: "+idNumber);
         }
