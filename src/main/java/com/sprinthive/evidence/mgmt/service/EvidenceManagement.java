@@ -4,7 +4,7 @@ import com.sprinthive.evidence.mgmt.dao.IdentityEvidenceRequestRepository;
 import com.sprinthive.evidence.mgmt.exception.ResourceNotFoundException;
 import com.sprinthive.evidence.mgmt.model.IdentityEvidenceRequest;
 import com.sprinthive.evidence.mgmt.util.IdNumberUtil;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.Input;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @EnableBinding({ProducerChannels.class})
-@Log
+@Slf4j
 @Service
 @EnableIntegration
 public class EvidenceManagement {
@@ -48,7 +48,7 @@ public class EvidenceManagement {
     }
 
     public IdentityEvidenceRequest createIdentityEvidenceRequest(String firstNames, String middleNames, String lastName,
-                                                                 Date dateOfBirth, String nationality,String identifyingNumber) {
+                                                                 Date dateOfBirth, String nationality, String identifyingNumber) {
         IdentityEvidenceRequest evidenceRequest = new IdentityEvidenceRequest();
         evidenceRequest.setFirstName(firstNames);
         evidenceRequest.setMiddleNames(middleNames);
@@ -64,8 +64,8 @@ public class EvidenceManagement {
 
     public IdentityEvidenceRequest addProofToIdentity(String idNumber, String key, Map<String, Object> payload) {
         List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidence(idNumber);
-        if(evidenceRequests == null || evidenceRequests.isEmpty()){
-            throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: "+idNumber);
+        if (evidenceRequests == null || evidenceRequests.isEmpty()) {
+            throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: " + idNumber);
         }
         IdentityEvidenceRequest request = evidenceRequests.get(0);
         request.addProof(key, payload);
@@ -77,8 +77,8 @@ public class EvidenceManagement {
 
     public Map<String, Object> getIdentityProof(String idNumber, String proofkey) {
         List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidence(idNumber);
-        if(evidenceRequests == null || evidenceRequests.isEmpty()){
-            throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: "+idNumber);
+        if (evidenceRequests == null || evidenceRequests.isEmpty()) {
+            throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: " + idNumber);
         }
         IdentityEvidenceRequest request = evidenceRequests.get(0);
         Map<String, Object> proof = request.getProofs(proofkey);
@@ -87,11 +87,11 @@ public class EvidenceManagement {
 
     @StreamListener("evidenceRequestProofAddedListener")
     public void process(IdentityEvidenceRequest evidenceRequest) throws URISyntaxException {
-        log.info("Handling evidenceRequestProofAdded: "+ evidenceRequest);
+        log.info("Handling evidenceRequestProofAdded: " + evidenceRequest);
     }
 }
 
-interface ProducerChannels{
+interface ProducerChannels {
 
     @Output
     MessageChannel evidenceRequestCreatedPush();
