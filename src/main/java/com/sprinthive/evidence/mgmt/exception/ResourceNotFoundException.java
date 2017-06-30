@@ -25,8 +25,4 @@ public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
-
-    public final RestStatus status() {
-        return RestStatus.NOT_FOUND;
-    }
 }

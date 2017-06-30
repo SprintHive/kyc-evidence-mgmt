@@ -25,8 +25,4 @@ public class InvalidInputException extends RuntimeException {
     public InvalidInputException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
-
-    public final RestStatus status() {
-        return RestStatus.NOT_FOUND;
-    }
 }
