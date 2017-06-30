@@ -11,9 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by dirk on 2017/06/19.
- */
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @Service

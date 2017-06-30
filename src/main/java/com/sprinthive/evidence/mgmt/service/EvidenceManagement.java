@@ -1,6 +1,6 @@
 package com.sprinthive.evidence.mgmt.service;
 
-import com.sprinthive.evidence.mgmt.dao.EvidenceRequestRepository;
+import com.sprinthive.evidence.mgmt.dao.IdentityEvidenceRequestRepository;
 import com.sprinthive.evidence.mgmt.exception.ResourceNotFoundException;
 import com.sprinthive.evidence.mgmt.model.IdentityEvidenceRequest;
 import com.sprinthive.evidence.mgmt.util.IdNumberUtil;
@@ -22,9 +22,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by dirk on 2017/06/19.
- */
 @EnableBinding({ProducerChannels.class})
 @Log
 @Service
@@ -35,7 +32,7 @@ public class EvidenceManagement {
     private final MessageChannel evidenceRequestCreatedPush;
     private final MessageChannel evidenceRequestProofAddedPush;
     @Autowired
-    private EvidenceRequestRepository evidenceRequestRepository;
+    private IdentityEvidenceRequestRepository evidenceRequestRepository;
 
 
     public EvidenceManagement(ProducerChannels producerChannels) {

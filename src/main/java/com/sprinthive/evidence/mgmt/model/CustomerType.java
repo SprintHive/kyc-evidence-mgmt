@@ -2,9 +2,6 @@ package com.sprinthive.evidence.mgmt.model;
 
 import static com.sprinthive.evidence.mgmt.model.VerificationType.*;
 
-/**
- * Created by dirk on 2017/06/21.
- */
 public enum CustomerType {
 
     INDIVIDUAL(INDIVIDUAL_DETAILS, ADDRESS, TAX_NUMBER),

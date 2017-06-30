@@ -5,10 +5,7 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchCrudReposi
 
 import java.util.List;
 
-/**
- * Created by dirk on 2017/06/19.
- */
-public interface EvidenceRequestRepository extends ElasticsearchCrudRepository<IdentityEvidenceRequest, Long> {
+public interface IdentityEvidenceRequestRepository extends ElasticsearchCrudRepository<IdentityEvidenceRequest, Long> {
 
     List<IdentityEvidenceRequest> findAllByIdentifyingNumber (String identifyingNumber);
 }
