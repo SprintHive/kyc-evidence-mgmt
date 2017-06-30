@@ -12,7 +12,7 @@ public class IdNumberUtil {
         if (idNumber == null)
             throw new RuntimeException("No ID number provided");
         Matcher matcher = ID_NUMBER_PATTERN.matcher(idNumber);
-        if(!matcher.find()){
+        if (!matcher.find()) {
             throw new RuntimeException("ID number not a valid SA id");
         }
         return idNumber;
@@ -21,7 +21,7 @@ public class IdNumberUtil {
     public static String cleanUp(String idNumber) {
         if (idNumber == null)
             return null;
-        idNumber = idNumber.replaceAll("\\s+","");
+        idNumber = idNumber.replaceAll("\\s+", "");
         return idNumber;
     }
 }

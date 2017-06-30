@@ -19,7 +19,8 @@ public class EvidenceRestService {
     private EvidenceManagement evidenceManagement;
 
     @RequestMapping(method = RequestMethod.GET, value = "/evidence/ping")
-    public void ping(){}
+    public void ping() {
+    }
 
     @RequestMapping(method = RequestMethod.GET, value = "/evidence/v1/identity/id/{idNumber}")
     public List<IdentityEvidenceRequest> findIdDocumentEvidence(@PathVariable String idNumber) {
@@ -32,7 +33,7 @@ public class EvidenceRestService {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/evidence/v1/identity")
-    public IdentityEvidenceRequest findIdDocumentEvidence(@RequestBody  IdentityEvidenceRequest evidenceRequest) {
+    public IdentityEvidenceRequest findIdDocumentEvidence(@RequestBody IdentityEvidenceRequest evidenceRequest) {
         return evidenceManagement.createIdentityEvidenceRequest(evidenceRequest.getFirstName(), evidenceRequest.getMiddleNames(), evidenceRequest.getLastName(), evidenceRequest.getDateOfBirth(), evidenceRequest.getNationality(), evidenceRequest.getIdentifyingNumber());
     }
 

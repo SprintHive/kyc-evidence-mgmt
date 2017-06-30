@@ -1,13 +1,11 @@
 package com.sprinthive.evidence.mgmt.model;
 
-import com.sprinthive.evidence.mgmt.exception.InvalidInputException;
 import lombok.Data;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Created by dirk on 2017/06/21.
- */
 @Data
 public class IdentityEvidenceRequest extends EvidenceRequest {
 
@@ -20,14 +18,14 @@ public class IdentityEvidenceRequest extends EvidenceRequest {
     private Map<String, Map<String, Object>> proofs;
 
     public void addProof(String key, Map<String, Object> proof) {
-        if(proofs == null){
+        if (proofs == null) {
             proofs = new HashMap<>();
         }
         proofs.put(key, proof);
     }
 
     public Map<String, Object> getProofs(String proofkey) {
-        if(proofs == null){
+        if (proofs == null) {
             return null;
         }
         return proofs.get(proofkey);

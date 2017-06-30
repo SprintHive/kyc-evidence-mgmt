@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @Builder
-@org.springframework.data.elasticsearch.annotations.Document(indexName="evidence")
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "evidence")
 public class Evidence {
 }

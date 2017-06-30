@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-@org.springframework.data.elasticsearch.annotations.Document(indexName="document-type")
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "document-type")
 public class DocumentType {
 
     @Id

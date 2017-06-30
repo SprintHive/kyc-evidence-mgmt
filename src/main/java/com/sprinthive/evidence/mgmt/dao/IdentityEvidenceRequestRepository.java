@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IdentityEvidenceRequestRepository extends ElasticsearchCrudRepository<IdentityEvidenceRequest, Long> {
 
-    List<IdentityEvidenceRequest> findAllByIdentifyingNumber (String identifyingNumber);
+    List<IdentityEvidenceRequest> findAllByIdentifyingNumber(String identifyingNumber);
 }
