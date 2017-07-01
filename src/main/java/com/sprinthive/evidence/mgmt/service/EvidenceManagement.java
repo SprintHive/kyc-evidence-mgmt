@@ -1,6 +1,7 @@
 package com.sprinthive.evidence.mgmt.service;
 
 import com.sprinthive.evidence.mgmt.dao.IdentityEvidenceRequestRepository;
+import com.sprinthive.evidence.mgmt.exception.ProofNotFoundException;
 import com.sprinthive.evidence.mgmt.exception.ResourceNotFoundException;
 import com.sprinthive.evidence.mgmt.model.IdentityEvidenceRequest;
 import com.sprinthive.evidence.mgmt.util.IdNumberUtil;
@@ -40,7 +41,7 @@ public class EvidenceManagement {
         this.evidenceRequestProofAddedPush = producerChannels.evidenceRequestProofAddedPush();
     }
 
-    public List<IdentityEvidenceRequest> findIdDocumentEvidence(String idNumber) {
+    public List<IdentityEvidenceRequest> findIdentityEvidenceRequests(String idNumber) {
         idNumber = IdNumberUtil.validate(idNumber);
         List<IdentityEvidenceRequest> evidenceRequests = evidenceRequestRepository.findAllByIdentifyingNumber(idNumber);
 
@@ -63,25 +64,33 @@ public class EvidenceManagement {
     }
 
     public IdentityEvidenceRequest addProofToIdentity(String idNumber, String key, Map<String, Object> payload) {
-        List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidence(idNumber);
-        if (evidenceRequests == null || evidenceRequests.isEmpty()) {
-            throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: " + idNumber);
-        }
-        IdentityEvidenceRequest request = evidenceRequests.get(0);
+        IdentityEvidenceRequest request = getIdentityEvidenceRequest(idNumber);
         request.addProof(key, payload);
         IdentityEvidenceRequest evidenceRequest = evidenceRequestRepository.save(request);
-        Message<IdentityEvidenceRequest> message = MessageBuilder.withPayload(evidenceRequest).build();
-        this.evidenceRequestProofAddedPush.send(message);
+        try {
+            Message<IdentityEvidenceRequest> message = MessageBuilder.withPayload(evidenceRequest).build();
+            this.evidenceRequestProofAddedPush.send(message);
+        } catch (Exception e) {
+            evidenceRequestRepository.delete(evidenceRequest.getId());
+            throw e;
+        }
         return evidenceRequest;
     }
 
-    public Map<String, Object> getIdentityProof(String idNumber, String proofkey) {
-        List<IdentityEvidenceRequest> evidenceRequests = findIdDocumentEvidence(idNumber);
+    private IdentityEvidenceRequest getIdentityEvidenceRequest(String idNumber) {
+        List<IdentityEvidenceRequest> evidenceRequests = findIdentityEvidenceRequests(idNumber);
         if (evidenceRequests == null || evidenceRequests.isEmpty()) {
-            throw new ResourceNotFoundException("Can't find and Identity Evidence Request for identifyingNumer: " + idNumber);
+            throw new ResourceNotFoundException("Can't find an Identity Evidence Request for identifyingNumber: " + idNumber);
         }
-        IdentityEvidenceRequest request = evidenceRequests.get(0);
-        Map<String, Object> proof = request.getProofs(proofkey);
+        return evidenceRequests.get(0);
+    }
+
+    public Map<String, Object> getIdentityProof(String idNumber, String proofKey) {
+        IdentityEvidenceRequest evidenceRequest = getIdentityEvidenceRequest(idNumber);
+        Map<String, Object> proof = evidenceRequest.getProofs(proofKey);
+        if (proof == null){
+            throw new ResourceNotFoundException("Can't find an proof "+proofKey+" on Identity Evidence Request:" + evidenceRequest.getId());
+        }
         return proof;
     }
 

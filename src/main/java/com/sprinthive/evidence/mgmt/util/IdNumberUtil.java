@@ -1,5 +1,7 @@
 package com.sprinthive.evidence.mgmt.util;
 
+import com.sprinthive.evidence.mgmt.exception.InvalidInputException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,10 +12,10 @@ public class IdNumberUtil {
     public static String validate(String idNumber) {
         idNumber = cleanUp(idNumber);
         if (idNumber == null)
-            throw new RuntimeException("No ID number provided");
+            throw new InvalidInputException("No ID number provided");
         Matcher matcher = ID_NUMBER_PATTERN.matcher(idNumber);
         if (!matcher.find()) {
-            throw new RuntimeException("ID number not a valid SA id");
+            throw new InvalidInputException("ID number not a valid SA id");
         }
         return idNumber;
     }

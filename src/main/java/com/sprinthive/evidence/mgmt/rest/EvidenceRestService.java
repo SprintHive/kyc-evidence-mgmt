@@ -24,7 +24,7 @@ public class EvidenceRestService {
 
     @RequestMapping(method = RequestMethod.GET, value = "/evidence/v1/identity/id/{idNumber}")
     public List<IdentityEvidenceRequest> findIdDocumentEvidence(@PathVariable String idNumber) {
-        return evidenceManagement.findIdDocumentEvidence(idNumber);
+        return evidenceManagement.findIdentityEvidenceRequests(idNumber);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/evidence/v1/identity/id/{idNumber}/proof/{proofkey}")
